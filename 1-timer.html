@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown Timer</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --panel: rgba(15, 23, 42, 0.7);
+        --field: rgba(17, 24, 39, 0.82);
+        --secondary: #94a3b8;
+        --text: #e2e8f0;
+        --accent: #f97316;
+        --shadow: rgba(15, 23, 42, 0.65);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(180deg, #0b1020 0%, #111827 100%);
+        color: var(--text);
+        font-family: Arial, sans-serif;
+      }
+
+      .nav-back {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 42px;
+        padding: 0 16px;
+        border: none;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.12);
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: 0 10px 22px rgba(15, 23, 42, 0.35);
+      }
+
+      .timer-wrapper {
+        width: min(520px, calc(100vw - 32px));
+        text-align: center;
+      }
+
+      .timer-controls {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        margin-bottom: 42px;
+      }
+
+      #datetime-picker {
+        width: min(280px, 70vw);
+        height: 48px;
+        border: none;
+        border-radius: 12px;
+        background: rgba(148, 163, 184, 0.15);
+        color: var(--text);
+        font-size: 1.15rem;
+        padding: 0 18px;
+        box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.2);
+      }
+
+      #datetime-picker::placeholder {
+        color: rgba(226, 232, 240, 0.6);
+      }
+
+      [data-start] {
+        height: 48px;
+        min-width: 120px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #f59e0b, #f97316);
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+      }
+
+      [data-start]:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+        box-shadow: none;
+      }
+
+      .timer {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .field {
+        min-width: 118px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 18px 10px 12px;
+        border-radius: 18px;
+        background: rgba(15, 23, 42, 0.72);
+        box-shadow: 0 18px 30px var(--shadow);
+      }
+
+      .value {
+        font-size: clamp(2rem, 4vw, 3.1rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: 0.05em;
+      }
+
+      .label {
+        margin-top: 6px;
+        font-size: 0.9rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--secondary);
+      }
+
+      @media (max-width: 520px) {
+        .timer {
+          gap: 12px;
+        }
+
+        .field {
+          min-width: 92px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="nav-back" href="./index.html">Back</a>
+
+    <div class="timer-wrapper">
+      <div class="timer-controls">
+        <input type="text" id="datetime-picker" placeholder="Select date and time" />
+        <button type="button" data-start disabled>Start</button>
+      </div>
+
+      <div class="timer" aria-live="polite">
+        <div class="field">
+          <span class="value" data-days>00</span>
+          <span class="label">Days</span>
+        </div>
+        <div class="field">
+          <span class="value" data-hours>00</span>
+          <span class="label">Hours</span>
+        </div>
+        <div class="field">
+          <span class="value" data-minutes>00</span>
+          <span class="label">Minutes</span>
+        </div>
+        <div class="field">
+          <span class="value" data-seconds>00</span>
+          <span class="label">Seconds</span>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./1-timer.js"></script>
+  </body>
+</html>

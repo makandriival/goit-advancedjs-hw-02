@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise Generator</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --card: rgba(15, 23, 42, 0.8);
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --primary: #f97316;
+        --primary-dark: #f59e0b;
+        --border: rgba(148, 163, 184, 0.2);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(180deg, #0b1020 0%, #111827 100%);
+        color: var(--text);
+        font-family: Arial, sans-serif;
+      }
+
+      .nav-back {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 42px;
+        padding: 0 16px;
+        border: none;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.12);
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: 0 10px 22px rgba(15, 23, 42, 0.35);
+      }
+
+      .form {
+        width: min(420px, calc(100vw - 32px));
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 28px 24px;
+        box-shadow: 0 18px 30px rgba(15, 23, 42, 0.55);
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+
+      input[type='number'] {
+        width: 100%;
+        margin-top: 8px;
+        height: 48px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: rgba(148, 163, 184, 0.08);
+        color: var(--text);
+        padding: 0 14px;
+        font-size: 1rem;
+      }
+
+      fieldset {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin: 22px 0;
+        padding: 18px 16px 10px;
+      }
+
+      legend {
+        color: var(--muted);
+        padding: 0 8px;
+      }
+
+      .state-option {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text);
+        margin-bottom: 12px;
+      }
+
+      button {
+        width: 100%;
+        height: 48px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="nav-back" href="./index.html">Back</a>
+
+    <form class="form">
+      <label>
+        Delay (ms)
+        <input type="number" name="delay" required min="0" step="1" placeholder="Enter delay" />
+      </label>
+
+      <fieldset>
+        <legend>State</legend>
+        <label class="state-option">
+          <input type="radio" name="state" value="fulfilled" required />
+          Fulfilled
+        </label>
+        <label class="state-option">
+          <input type="radio" name="state" value="rejected" required />
+          Rejected
+        </label>
+      </fieldset>
+
+      <button type="submit">Create notification</button>
+    </form>
+
+    <script type="module" src="./2-snackbar.js"></script>
+  </body>
+</html>
